@@ -137,6 +137,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 		Handler.setUseFastConnectionExceptions(true);
 		try {
 			try {
+				//
 				definePackageIfNecessary(name);
 			}
 			catch (IllegalArgumentException ex) {

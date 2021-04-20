@@ -84,7 +84,14 @@ public class JarLauncher extends ExecutableArchiveLauncher {
 		return NESTED_ARCHIVE_ENTRY_FILTER.matches(entry);
 	}
 
+	/**
+	 * springboot jar -> META-INF -> MANIFEST.MF -> Main-Class: org.springframework.boot.loader.JarLauncher
+	 * springboot 应用程序启动主函数
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
+		// 应用程序类加载器 加载 JarLauncher 类
 		new JarLauncher().launch(args);
 	}
 

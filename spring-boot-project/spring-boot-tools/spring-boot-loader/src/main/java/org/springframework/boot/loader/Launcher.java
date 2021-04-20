@@ -52,6 +52,7 @@ public abstract class Launcher {
 		if (!isExploded()) {
 			JarFile.registerUrlProtocolHandler();
 		}
+		// 创建自定义类加载器 LaunchedURLClassLoader
 		ClassLoader classLoader = createClassLoader(getClassPathArchivesIterator());
 		String jarMode = System.getProperty("jarmode");
 		String launchClass = (jarMode != null && !jarMode.isEmpty()) ? JAR_MODE_LAUNCHER : getMainClass();
@@ -104,7 +105,9 @@ public abstract class Launcher {
 	 * @throws Exception if the launch fails
 	 */
 	protected void launch(String[] args, String launchClass, ClassLoader classLoader) throws Exception {
+		// 将自定义类加载器 LaunchedURLClassLoader 设置到当前线程(Main主线程)上下文类加载器
 		Thread.currentThread().setContextClassLoader(classLoader);
+		// 使用自定义的类加载器加载启动类 调用 SpringApplication 启动类主函数
 		createMainMethodRunner(launchClass, args, classLoader).run();
 	}
 

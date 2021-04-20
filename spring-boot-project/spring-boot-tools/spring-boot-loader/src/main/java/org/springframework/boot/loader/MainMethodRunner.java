@@ -43,9 +43,11 @@ public class MainMethodRunner {
 	}
 
 	public void run() throws Exception {
+		// 使用自定义的类加载器加载启动类
 		Class<?> mainClass = Class.forName(this.mainClassName, false, Thread.currentThread().getContextClassLoader());
 		Method mainMethod = mainClass.getDeclaredMethod("main", String[].class);
 		mainMethod.setAccessible(true);
+		// 调用 SpringApplication 启动类主函数
 		mainMethod.invoke(null, new Object[] { this.args });
 	}
 
