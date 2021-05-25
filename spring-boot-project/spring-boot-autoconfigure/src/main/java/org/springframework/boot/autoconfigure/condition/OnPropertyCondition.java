@@ -84,6 +84,13 @@ class OnPropertyCondition extends SpringBootCondition {
 		return annotationAttributes;
 	}
 
+	/**
+	 * 这个函数尝试使用 PropertyResoIver 来验证对应的属性是 否存在， 如果不存在则验证不通过，因为 PropertyResolver 中包含了所有的配置属性信息
+	 *
+	 * @param annotationAttributes
+	 * @param resolver
+	 * @return
+	 */
 	private ConditionOutcome determineOutcome(AnnotationAttributes annotationAttributes, PropertyResolver resolver) {
 		Spec spec = new Spec(annotationAttributes);
 		List<String> missingProperties = new ArrayList<>();

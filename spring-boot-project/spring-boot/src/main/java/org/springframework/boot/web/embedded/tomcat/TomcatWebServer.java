@@ -203,6 +203,10 @@ public class TomcatWebServer implements WebServer {
 		awaitThread.start();
 	}
 
+	/**
+	 *
+	 * @throws WebServerException
+	 */
 	@Override
 	public void start() throws WebServerException {
 		synchronized (this.monitor) {

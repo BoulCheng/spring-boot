@@ -177,6 +177,12 @@ public class TomcatServletWebServerFactory extends AbstractServletWebServerFacto
 		return lifecycleListeners;
 	}
 
+	/**
+	 *
+	 * @param initializers {@link ServletContextInitializer}s that should be applied as
+	 * the server starts
+	 * @return
+	 */
 	@Override
 	public WebServer getWebServer(ServletContextInitializer... initializers) {
 		if (this.disableMBeanRegistry) {
